@@ -1,0 +1,39 @@
+{
+  "name": "@menhera/enofuda",
+  "version": "0.1.0",
+  "description": "Menhera.org General Assembly Voting System",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "node dist/test.js"
+  },
+  "type": "module",
+  "tyoes": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/menhera-org/enofuda.git"
+  },
+  "author": "Menhera.org",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/menhera-org/enofuda/issues"
+  },
+  "homepage": "https://github.com/menhera-org/enofuda#readme",
+  "devDependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/cors": "^2.8.17",
+    "@types/ejs": "^3.1.5",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.4",
+    "@types/uuid": "^9.0.7",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "glob": "^10.3.10",
+    "uuid": "^9.0.1"
+  }
+}

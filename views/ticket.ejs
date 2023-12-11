@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>総会議決権行使システム</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/style.css">
+    <meta name="enofuda:assembly" content="<%= JSON.stringify(assembly) %>">
+    <meta name="enofuda:ticket" content="<%= JSON.stringify(ticket) %>">
+    <script defer src="/assets/vote.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>総会議決権行使システム</h1>
+        <h2><%= assembly.name %></h2>
+        <p>投票期限：本総会にて議案の採決が行われるときまで (総会の日時参照)</p>
+        <p>投票は1回だけできます。議決権の委任を行う場合，本ページのリンクを被委任者に渡してください。</p>
+        <p>操作を行わなかった場合，議長に議決権を委任したものとして取り扱います。</p>
+        <% for (const proposal of assembly.proposals) { %>
+            <h3><%= proposal.title %></h3>
+            <p><%= proposal.text %></p>
+            <p><select class="proposal-vote" data-proposal-id="<%= proposal.uuid %>" autocomplete="off">
+                <option value="">選択してください</option>
+                <option value="yes">賛成</option>
+                <option value="no">反対</option>
+                <option value="abstain">棄権</option>
+            </select></p>
+        <% } %>
+        <hr>
+        <p><button id="vote-button">投票</button></p>
+        <pre id="error-message"></pre>
+        <p hidden id="voted">投票しました</p>
+    </div>
+</body>
+</html>

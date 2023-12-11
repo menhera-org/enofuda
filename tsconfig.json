@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "module": "ES2022",
+        "target": "ES2022",
+        "sourceMap": true,
+        "allowJs": true,
+        "checkJs": false,
+        "esModuleInterop": true,
+        "strict": true,
+        "moduleResolution": "node"
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
