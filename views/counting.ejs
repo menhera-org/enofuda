@@ -13,7 +13,6 @@
         <% for (const proposal of assembly.proposals) { %>
             <% const count = counts[proposal.uuid]; %>
             <h3><%= proposal.title %></h3>
-            <p><%= proposal.text %></p>
             <p>賛成：<%= count.yes %> / 反対：<%= count.no %> / 棄権：<%= count.abstain %></p>
         <% } %>
     </div>
