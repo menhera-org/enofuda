@@ -39,6 +39,32 @@ app.get('/ticket/:assembly_uuid/:ticket_uuid/:token', async (req, res, next) => 
     }
 });
 
+type ProposalCount = Required<Record<VoteOption, number>>;
+
+app.get('/counting/:assembly_uuid', async (req, res, next) => {
+    try {
+        const { assembly_uuid } = req.params;
+        const assembly = await store.getAssembly(assembly_uuid);
+        const votes = await store.collectVotes(assembly_uuid);
+        const proposalCounts: Record<string, ProposalCount> = {};
+        for (const proposal of assembly.proposals) {
+            proposalCounts[proposal.uuid] = {
+                [VoteOption.YES]: 0,
+                [VoteOption.NO]: 0,
+                [VoteOption.ABSTAIN]: 0,
+            } as ProposalCount;
+        }
+        for (const vote of votes) {
+            for (const [proposalUuid, voteOption] of Object.entries(vote.proposals)) {
+                proposalCounts[proposalUuid][voteOption]++;
+            }
+        }
+        res.render('counting', { assembly, counts: proposalCounts });
+    } catch (e) {
+        next(e);
+    }
+});
+
 // POST application/json
 app.post('/vote', async (req, res, next) => {
     try {

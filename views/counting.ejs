@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>総会開票状況</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>総会開票状況</h1>
+        <h2><%= assembly.name %></h2>
+        <% for (const proposal of assembly.proposals) { %>
+            <% const count = counts[proposal.uuid]; %>
+            <h3><%= proposal.title %></h3>
+            <p><%= proposal.text %></p>
+            <p>賛成：<%= count.yes %> / 反対：<%= count.no %> / 棄権：<%= count.abstain %></p>
+        <% } %>
+    </div>
+</body>
+</html>
