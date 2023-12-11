@@ -5,6 +5,7 @@ const ticket = JSON.parse(document.querySelector('meta[name="enofuda:ticket"]').
 const voteButton = document.getElementById('vote-button');
 
 function vote() {
+    voteButton.disabled = true;
     const proposalVotes = document.querySelectorAll('select.proposal-vote');
     const proposals = {};
     for (const proposalVote of proposalVotes) {
