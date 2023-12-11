@@ -105,6 +105,6 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
     res.status(500).json(response);
 });
 
-app.listen(LISTEN_PORT, () => {
+app.listen(LISTEN_PORT, '127.0.0.1', () => {
     console.log(`Listening on 127.0.0.1:${LISTEN_PORT}`);
 });
